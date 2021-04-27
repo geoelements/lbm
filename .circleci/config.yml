@@ -14,9 +14,26 @@ jobs:
             cd build
             cmake ..
             make -j2
+            ./lbmtest
+  cppcheck:
+    docker:
+      - image: quay.io/geoelements/lbm-gpu
+    steps:
+      - checkout
+      - run:
+          name: cppcheck/clang-format
+          command: |
+            cppcheck --version
+            cppcheck --inline-suppr --enable=warning --inconclusive --force --language=c++ --std=c++11 src/*.cc include/*.h tests/*.cc --error-exitcode=1
+      # clang-format
+      - run:
+          name: clang-format
+          command: |
+            python ./clang-tools/run-clang-format.py -r include/* src/* tests/*
 
 workflows:
     version: 2
     build:
         jobs:
             - dev
+            - cppcheck
