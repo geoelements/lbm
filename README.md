@@ -2,7 +2,9 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/geoelements/lbm/develop/license.md)
 [![CircleCI](https://circleci.com/gh/geoelements/lbm.svg?style=svg)](https://circleci.com/gh/geoelements/lbm)
-
+[![codecov](https://codecov.io/gh/geoelements/lbm/branch/develop/graph/badge.svg?token=LT1P12Q6LW)](https://codecov.io/gh/geoelements/lbm)
+[![Project management](https://img.shields.io/badge/projects-view-ff69b4.svg)](https://github.com/orgs/geoelements/projects/1)
+[![Discussion forum](https://img.shields.io/badge/forum-lbm-blueviolet.svg)](https://github.com/geoelements/lbm/discussions)
 
 ## Compile and run
 
