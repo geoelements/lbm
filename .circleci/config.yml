@@ -13,7 +13,7 @@ jobs:
             [ "$(ls -A build)" ] && rm -rf build/*
             cd build
             cmake ..
-            make -j2
+            make -j2 VERBOSE=1
             ./lbmtest
   cppcheck:
     docker:
