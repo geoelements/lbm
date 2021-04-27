@@ -1,0 +1,22 @@
+version: 2.0
+jobs:
+  dev:
+    docker:
+      - image: quay.io/geoelements/lbm-gpu
+    steps:
+      - checkout
+      # CUDA
+      - run:
+          name: CUDA
+          command: |
+            mkdir -p build
+            [ "$(ls -A build)" ] && rm -rf build/*
+            cd build
+            cmake ..
+            make -j2
+
+workflows:
+    version: 2
+    build:
+        jobs:
+            - dev
