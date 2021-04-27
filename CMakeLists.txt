@@ -56,10 +56,9 @@ if(LBM_BUILD_TESTING)
   enable_testing()
 endif()
 
-
 # Coverage
-#find_package(codecov)
-#if(ENABLE_COVERAGE)
-#  add_executable(lbmtest_coverage ${lbm_src} ${test_src})
-#  add_coverage(lbmtest_coverage)
-#endif()
+find_package(codecov)
+if(ENABLE_COVERAGE)
+  add_executable(lbmtest_coverage ${lbm_src} ${test_src})
+  add_coverage(lbmtest_coverage)
+endif()

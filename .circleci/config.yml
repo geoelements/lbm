@@ -30,6 +30,25 @@ jobs:
           name: clang-format
           command: |
             python ./clang-tools/run-clang-format.py -r include/* src/* tests/*
+  codecov:
+    docker:
+      - image: quay.io/geoelements/lbm-gpu
+    steps:
+      - checkout
+
+      # codecoverage
+      - run:
+          name: codecov.io
+          command: |
+            mkdir -p build
+            [ "$(ls -A build)" ] && rm -rf build/*
+            cd build
+            cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=On -DENABLE_COVERAGE=On ..
+            make lbmtest_coverage -j2
+            ./lbmtest_coverage
+            lcov --directory . --capture --output-file coverage.info
+            bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
+
 
 workflows:
     version: 2
