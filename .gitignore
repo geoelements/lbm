@@ -56,3 +56,4 @@ configure.scan
 *missing
 *stamp-h1
 benchmarks/
+.vscode/**
